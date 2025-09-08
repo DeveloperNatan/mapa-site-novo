@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout PAs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/Layout.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+
+<body class="bg-[#1e293b] p-4 sm:p-6">
+
+    <!-- Navbar -->
+    <nav
+        class="bg-[#242c33] text-white p-4 flex flex-col md:flex-row justify-between items-center gap-4 rounded-lg shadow-sm">
+        <div class="flex items-center gap-4">
+            <img src="../assets/logo.png" alt="Logo" class="h-14">
+            <h1 class="text-2xl font-bold tracking-wide">Gerenciamento de PA</h1>
+        </div>
+
+        <ul class="flex items-center gap-6 mt-4 md:mt-0 text-lg">
+            <li><a href="/" class="hover:text-cyan-300 transition-colors font-medium">Home</a></li>
+            <form method="get" action="/logout">
+                <button
+                    class="bg-[#1a8caa] px-4 py-2 rounded hover:bg-[#195468] transition-colors font-medium">Sair</button>
+            </form>
+        </ul>
+    </nav>
+
+    <!-- Título -->
+    <h1 class="text-4xl text-white font-extrabold text-center my-8 tracking-wide">Mapa Site</h1>
+
+    <!-- Layout principal -->
+    <div class="flex flex-col xl:flex-row justify-center items-start gap-6">
+
+        <!-- Seção A -->
+        <div
+            class="p-6 rounded-2xl shadow-md w-full xl:w-1/3 text-gray-900 bg-gradient-to-b from-[#146c84] to-[#0f5365]">
+            <h2 class="text-2xl font-bold text-center mb-6 uppercase tracking-wide">A</h2>
+            <div class="flex justify-center">
+                <div id="container-espinhas-A" class="flex flex-col items-start gap-2"></div>
+            </div>
+        </div>
+
+        <!-- Seção B -->
+        <div
+            class="p-6 rounded-2xl shadow-md w-full xl:w-1/3 text-gray-900 bg-gradient-to-b from-[#146c84] to-[#0f5365]">
+            <h2 class="text-2xl font-bold text-center mb-6 uppercase tracking-wide">B</h2>
+            <div class="flex justify-center">
+                <div id="container-espinhas-B" class="flex flex-col items-center gap-2"></div>
+            </div>
+        </div>
+
+        <!-- Seção C + Entrada -->
+        <div class="flex flex-col w-full xl:w-1/3 gap-6">
+            <div class="p-6 rounded-2xl shadow-md w-full text-gray-900 bg-gradient-to-b from-[#146c84] to-[#0f5365]">
+                <h2 class="text-2xl font-bold text-center mb-6 uppercase tracking-wide">C</h2>
+                <div class="flex justify-center">
+                    <div id="container-espinhas-C" class="flex flex-col items-end gap-2"></div>
+                </div>
+            </div>
+
+            <div
+                class="bg-cyan-200 border-2 border-cyan-400 rounded-xl flex justify-center items-center h-24 shadow-sm">
+                <h1 class="text-2xl font-bold text-[#0f5365] uppercase tracking-wide">Entrada</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <!-- <div id="ModalItens" class="hidden fixed inset-0 bg-black/60 items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-lg w-full max-w-[450px] max-h-[500px] flex flex-col justify-between overflow-auto p-6 border border-[#146c84]">
+      <h1 class="text-3xl font-bold text-center text-[#146c84] mb-6">Detalhes da PA</h1>
+      <div class="flex flex-col gap-4">
+        <div id="local-info" class="text-center text-white bg-[#146c84] py-2 rounded-lg text-lg font-semibold"></div>
+        <h2 class="font-semibold text-gray-700">Computador</h2>
+        <a id="local-pc" class="text-gray-600  transition-colors"></a>
+        <div class="col-span-1 flex justify-center gap-2">
+        <button class="bg-[#146c84] text-white rounded p-1 cursor-pointer mr-1 btn-edit"  id="OpenModalEdit">
+            <i class="bi bi-pencil-square"></i>
+        </button>
+    </div>
+      </div>
+      
+      <button id="ButtonFechar" class="w-full mt-6 bg-[#146c84] text-white py-2 rounded-lg hover:bg-[#0f5365] transition-colors">Fechar</button>
+    </div>
+  </div> -->
+
+
+    <div id="ModalItens" class="hidden fixed inset-0 z-50 items-center justify-center">
+    </div>
+
+</body>
+
+</html>
