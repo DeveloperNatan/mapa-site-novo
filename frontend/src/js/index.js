@@ -89,7 +89,7 @@ function CreateItems(item) {
 
 async function fetchApitable() {
   try {
-    const url = "http://localhost:9001/api/relacao";
+    const url = `${CONFIG.API_URL}api/relacao`;
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -147,7 +147,7 @@ InputBusca.addEventListener("input", () => {
 
 async function ModalEdit(id) {
   try {
-    const url = `http://localhost:9001/api/relacao/${id}`;
+    const url = `${CONFIG.API_URL}api/relacao/${id}`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`API request failed, status:${response.status}`);
@@ -298,7 +298,7 @@ function HrefSnipeMNT(item) {
 
 function HrefHistorico(item) {
   window.open(
-    `http://localhost:9000/historico/${item}`
+    `${CONFIG.PORT_HISTORICO}historico/${item}`
   );
 }
 

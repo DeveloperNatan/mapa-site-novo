@@ -1,6 +1,6 @@
 // --------------------- FETCH DE DADOS ---------------------
 async function getData() {
-  const url = "http://localhost:9001/api/relacao";
+  const url = `${CONFIG.API_URL}api/relacao`;
   try {
     const response = await fetch(url);
     if (!response.ok) {

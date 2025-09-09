@@ -1,6 +1,3 @@
-// analytics.js
-
-// IDs dos elementos
 const totalMachinesEl = document.getElementById("total-machines");
 const totalSwapsEl = document.getElementById("total-swaps");
 const averageSwapsEl = document.getElementById("average-swaps");
@@ -15,7 +12,7 @@ let analyticsData = [];
 // Função para buscar dados da API
 async function fetchAnalytics() {
   try {
-    const response = await fetch("http://localhost:9001/api/relacao");
+    const response = await fetch(`${CONFIG.API_URL}api/relacao`);
     if (!response.ok) throw new Error(`Erro ao buscar dados: ${response.status}`);
     const data = await response.json();
     analyticsData = data;

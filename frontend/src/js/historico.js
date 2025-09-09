@@ -21,7 +21,7 @@ let historicoData = [];
 // Função para buscar dados da API
 async function fetchHistorico() {
   try {
-    const url = `http://localhost:9001/api/relacao/${id}`;
+    const url = `${CONFIG.API_URL}api/relacao/${id}`;
     const response = await fetch(url);
 
     if (!response.ok) throw new Error(`API request failed, status: ${response.status}`);
@@ -85,8 +85,8 @@ function renderTable() {
 
 
 // Eventos de filtro
-acaoFilter.addEventListener("change", renderTable);
-valorFilter.addEventListener("input", renderTable);
+
+
 
 // Inicializa
 fetchHistorico();

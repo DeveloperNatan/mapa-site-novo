@@ -3,6 +3,8 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const session = require("express-session");
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+const port = process.env.PORT 
 
 app.use(cors());
 app.use(
@@ -23,5 +25,6 @@ app.use("/", require("./routes"));
 app.use(express.static(path.join(__dirname, "../../frontend/src/html/")));
 app.use(express.static(path.join(__dirname, "../../frontend/src")));
 
+
 // start server
-app.listen(9000);
+app.listen(port);
