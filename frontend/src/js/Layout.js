@@ -46,7 +46,8 @@ function criarEspinhaHTML(
       class="pa w-12 h-12 border-2 rounded-md flex items-center justify-center bg-gray-50 hover:bg-cyan-100 cursor-pointer" 
       data-local="${localCompleto}" 
       data-pc="${paData?.RelacionamentoPA.patrimonioPC}" 
-      data-id="${paData?.id}">${paStr}</div>`;
+      data-id="${paData?.id}"
+      >${paStr}</div>`;
 
     paNum = invertido ? paNum - 1 : paNum + 1;
   }
@@ -140,29 +141,48 @@ function OpenModalItens(localCompleto, patrimonioPC, id) {
   const ModalItens = document.getElementById("ModalItens");
 
   ModalItens.innerHTML = `
-  <div class="fixed inset-0 bg-black/50 flex items-center justify-center" id="OpenModalEdit">
-    <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg max-h-[600px] overflow-auto p-6 border border-[#146c84] flex flex-col gap-4">
-      
-      <h1 class="text-3xl font-bold text-center text-[#146c84] mb-6">Detalhes da PA</h1>
-      
-      <div class="flex flex-col gap-4">
-        <div id="local-info" data-id="${id}" class="text-center text-white bg-[#146c84] py-2 rounded-lg text-lg font-semibold">
-          ${localCompleto}
-        </div>
-        <div>
-          <h2 class="font-semibold text-gray-700 mb-1">Computador</h2>
-          <a id="local-pc" class="text-gray-600 hover:text-cyan-600 transition-colors cursor-pointer">
-            ${patrimonioPC || "Não cadastrado"}
-          </a>
-        </div>
+  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50" id="OpenModalEdit">
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg max-h-[600px] overflow-auto p-6 border-2 border-[#146c84] flex flex-col gap-6">
+
+    <!-- Título -->
+    <h1 class="text-3xl font-bold text-center text-[#146c84]">
+      Detalhes da PA
+    </h1>
+
+    <!-- Informações principais -->
+    <div class="flex flex-col gap-4">
+
+      <!-- Local -->
+      <div id="local-info" data-id="${id}" class="text-center text-white bg-[#146c84] py-2 rounded-lg text-lg font-semibold">
+        ${localCompleto}
       </div>
-      
-      <button id="ButtonFechar" class="mt-4 w-full bg-[#146c84] text-white py-2 rounded-lg hover:bg-[#0f5365] transition-colors">
-        Fechar
-      </button>
+
+      <!-- Patrimônio do PC -->
+      <div class="flex flex-col cursor-pointer" onclick="HrefSnipePC('${patrimonioPC}')">
+        <h2 class="font-semibold text-gray-700 mb-1">Computador</h2>
+        <span id="local-pc" class="text-gray-600 hover:text-cyan-600 transition-colors">
+          ${patrimonioPC || "Não cadastrado"}
+        </span>
+      </div>
+
+      <!-- Histórico -->
+      <div class="flex flex-col cursor-pointer" onclick="HrefHistorico(${id})">
+        <h2 class="font-semibold text-gray-700 mb-1">Histórico</h2>
+        <span class="text-gray-600 hover:text-cyan-600 transition-colors flex items-center gap-1">
+          Ver histórico <i class="bi bi-clock-history"></i>
+        </span>
+      </div>
+
     </div>
+
+    <!-- Botão Fechar -->
+    <button id="ButtonFechar" class="mt-4 w-full bg-[#146c84] text-white py-2 rounded-lg hover:bg-[#0f5365] transition-colors">
+      Fechar
+    </button>
+
   </div>
-  `;
+</div>
+`;
 
   // Evento botão fechar
   const botaoFechar = ModalItens.querySelector("#ButtonFechar");
@@ -173,7 +193,7 @@ function OpenModalItens(localCompleto, patrimonioPC, id) {
 
   // Evento botão editar
   const botaoEditar = ModalItens.querySelector("#OpenModalEdit");
-  botaoEditar.addEventListener("click", () => {});
+  botaoEditar.addEventListener("click", () => { });
 
   ModalItens.classList.remove("hidden");
   ModalItens.classList.add("flex");
@@ -196,6 +216,20 @@ function configurarPAs() {
       OpenModalItens(local, pc, id);
     });
   });
+}
+
+
+function HrefHistorico(item) {
+  window.open(
+    `http://localhost:9000/historico/${item}`
+  );
+}
+
+function HrefSnipePC(item) {
+  window.open(
+    `https://snipe.schulze.com.br/hardware?page=1&size=20&order=asc&sort=name&search=${item}`,
+    "_blank"
+  );
 }
 
 // --------------------- INICIALIZAÇÃO ---------------------

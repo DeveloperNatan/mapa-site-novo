@@ -23,6 +23,10 @@ router.get("/analytics", AuthMiddle, (req, res) => {
   res.sendFile(path.join(htmlPath, "analytics.html"));
 });
 
+router.get("/historico/:id", AuthMiddle, (req, res) => {
+  res.sendFile(path.join(htmlPath, "historico.html"));
+});
+
 router.get("/login", (req, res) => {
   res.sendFile(path.join(htmlPath, "login.html"));
 });
@@ -55,5 +59,6 @@ router.post("/delete", AuthMiddle, async (req, res) => {
 router.post("/update", AuthMiddle, async (req, res) => {
   await service.Edicao(req, res);
 });
+
 
 module.exports = router;

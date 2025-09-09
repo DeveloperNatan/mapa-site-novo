@@ -103,11 +103,26 @@ exports.Edicao = async function (req, res) {
       },
     });
 
-    // Trigger no banco já cria o histórico, não precisa fazer nada manualmente aqui
+    // Trigger no banco já cria o histórico
 
-    res.status(200).json({ message: "Atualizado com sucesso" });
+    res.status(201).redirect("/");
   } catch (error) {
     console.error({ error: "Erro ao editar", details: error.message });
     res.status(500).json({ error: "Erro ao editar", details: error.message });
   }
 };
+
+exports.HistoricoFind = async function (req, res) {
+  const id = req.params.id;
+  try {
+    const resultado = await prisma.relacionamentoPA.findUnique({
+      where: { id: Number(id) },
+      include: {
+        HistoricoPA: true
+      }
+    });
+    res.json(resultado); 1
+  } catch (error) {
+    console.error({ error: error.message });
+  }
+}

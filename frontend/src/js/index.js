@@ -27,7 +27,7 @@ function CreateItems(item) {
   ArrayLocals.push(item.localCompleto);
 
   menuitems.classList =
-    "bg-white rounded-lg shadow p-1 mb-1 grid grid-cols-2 md:grid-cols-7 gap-2 items-center text-center";
+    "bg-white rounded-lg shadow p-1 mb-1 grid grid-cols-2 md:grid-cols-8 gap-2 items-center text-center";
 
   menuitems.innerHTML = `
     <span class="hidden md:inline-block">${item.filial}</span>
@@ -39,7 +39,7 @@ function CreateItems(item) {
         <strong class="md:hidden text-sm">Local: </strong>
         <span>${item.RelacionamentoPA.localCompleto}</span>
     </div>
-
+     <input type="hidden" name="id-historico" value="${item.id}">
     <div class="col-span-1 text-left md:text-center">
         <strong class="md:hidden text-sm">PC: </strong>
         <button onclick="HrefSnipePC('${item.RelacionamentoPA.patrimonioPC}')"
@@ -48,7 +48,7 @@ function CreateItems(item) {
         </button>
     </div>
 
-    <div class="col-span-1 flex justify-center gap-2">
+    <div class="col-span-2 flex justify-center gap-2">
         <button class="bg-[#146c84] text-white rounded p-1 cursor-pointer mr-1 btn-edit" 
                 onclick="OpenModal(${item.id})" id="OpenModalEdit">
             <i class="bi bi-pencil-square"></i>
@@ -60,7 +60,15 @@ function CreateItems(item) {
                 <i class="bi bi-trash"></i>
             </button>
         </form>
+        <div class="col-span-1 text-left md:text-center">
+        <strong class="md:hidden text-sm">PC: </strong>
+        <button onclick="HrefHistorico('${item.id}')"
+                class="underline decoration-1 text-black rounded-sm p-1 w-1/2 cursor-pointer">
+            <i class="bi bi-clock-history"></i>
+        </button>
     </div>
+    </div>
+     
   `;
 
   switch (item.filial) {
@@ -89,7 +97,6 @@ async function fetchApitable() {
     }
 
     menutable = await response.json();
-    console.log(menutable);
 
     // corrigido para usar localCompleto direto
     menutable.sort((a, b) =>
@@ -103,6 +110,7 @@ async function fetchApitable() {
     });
   } catch (error) {
     console.log("Erro ao buscar dados:", error);
+    return menutable = [];
   }
 }
 
@@ -155,18 +163,16 @@ async function ModalEdit(id) {
 
       <div>
         <label class="block text-sm font-medium">Patrimônio PC</label>
-        <input type="text" name="patrimonioPC" value="${
-          menu.RelacionamentoPA.patrimonioPC
-        }"
+        <input type="text" name="patrimonioPC" value="${menu.RelacionamentoPA.patrimonioPC
+      }"
           class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
         <input type="hidden" name="id" value="${menu.id}">
       </div>
       <div>
         <label class="block text-sm font-medium">Filial</label>
         <select name="filial" class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-          <option ${
-            menu.filial === "J1" ? "selected" : ""
-          } value="J1">Joinville Site (J1)</option>
+          <option ${menu.filial === "J1" ? "selected" : ""
+      } value="J1">Joinville Site (J1)</option>
         </select>
       </div>
 
@@ -191,21 +197,16 @@ async function ModalEdit(id) {
       <div>
         <label class="block text-sm font-medium">Carteira/Setor</label>
         <select name="carteira" class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-          <option ${
-            menu.carteira === "BV" ? "selected" : ""
-          } value="BV">BV</option>
-          <option ${
-            menu.carteira === "PAN" ? "selected" : ""
-          } value="PAN">PAN</option>
-          <option ${
-            menu.carteira === "SANTANDER" ? "selected" : ""
-          } value="SANTANDER">SANTANDER</option>
-          <option ${
-            menu.carteira === "BRADESCO" ? "selected" : ""
-          } value="BRADESCO">BRADESCO</option>
-          <option ${
-            menu.carteira === "INFRA" ? "selected" : ""
-          } value="INFRA">INFRA</option>
+          <option ${menu.carteira === "BV" ? "selected" : ""
+      } value="BV">BV</option>
+          <option ${menu.carteira === "PAN" ? "selected" : ""
+      } value="PAN">PAN</option>
+          <option ${menu.carteira === "SANTANDER" ? "selected" : ""
+      } value="SANTANDER">SANTANDER</option>
+          <option ${menu.carteira === "BRADESCO" ? "selected" : ""
+      } value="BRADESCO">BRADESCO</option>
+          <option ${menu.carteira === "INFRA" ? "selected" : ""
+      } value="INFRA">INFRA</option>
         </select>
       </div>
 
@@ -292,6 +293,12 @@ function HrefSnipeMNT(item) {
   window.open(
     `https://snipe.schulze.com.br/hardware?page=1&size=20&order=asc&sort=name&search=${item}`,
     "_blank"
+  );
+}
+
+function HrefHistorico(item) {
+  window.open(
+    `http://localhost:9000/historico/${item}`
   );
 }
 
