@@ -4,8 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMDFKWFo4Wjk2OUZGNTVLQVdCM1RGVFZSVEEiLCJ0ZW5hbnRfaWQiOiJmNjE1MWZiY2JiZTg1ODc5N2Q5ZDA3MTdiOGUyOGZiNWNiZTkzMDZjMWJmZTM0Mjg5YWYxYTBmYTgwNTYyMTIyIiwiaW50ZXJuYWxfc2VjcmV0IjoiYWEzMjYxNTItNTY0OC00N2EzLWE0NzItMWI2N2E1M2VhNGI1In0.5ZYS2kwzhZAHFtv3DpSrzNx_c8zxg33PTOrpsrMMyXw"
-  //url = env("DATABASE_URL")
+  url      = "prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RfaWQiOjEsInNlY3VyZV9rZXkiOiJza19vTEFhUG5kdFUzX1lDbFBoZ1BSTmkiLCJhcGlfa2V5IjoiMDFLNFAxNTZRRUc2WkYxM1JTM0M3NjhWWjYiLCJ0ZW5hbnRfaWQiOiIzNmZhMzllOTFlYzQxZjU1YmZhNDljMTE5NjNmMjhkMGUzMTJjNmYwZjJjNjNlNGM0ZmQyMjdmZmY0YzM4OTQwIiwiaW50ZXJuYWxfc2VjcmV0IjoiNTdiMmYzNDctMDU2OS00OTEyLTkxYWItYmQ5NDFmZTE5MDA0In0.Dy9X4ewfV30Yhd7h2CXCiz1WNIggWFuMqDddnwFjBlg"
 }
 
 model LocalizacaoPA {
@@ -15,28 +14,30 @@ model LocalizacaoPA {
   espinha          String
   pa               String
   carteira         String
-  RelacionamentoPA RelacionamentoPA? 
-  HistoricoPA      HistoricoPA[]     
+  HistoricoPA      HistoricoPA[]
+  RelacionamentoPA RelacionamentoPA?
 }
 
 model RelacionamentoPA {
-  id              Int           @id   
-  localizacaoPA   LocalizacaoPA @relation(fields: [id], references: [id]) 
+  id              Int           @id
   localCompleto   String        @unique
   dataCriacao     DateTime      @default(now())
   dataModificacao DateTime      @updatedAt
   patrimonioMNT1  String        @default("")
   patrimonioMNT2  String        @default("")
   patrimonioPC    String
-  HistoricoPA     HistoricoPA[] 
+  HistoricoPA     HistoricoPA[]
+  localizacaoPA   LocalizacaoPA @relation(fields: [id], references: [id])
 }
 
 model HistoricoPA {
-  id                Int              @id @default(autoincrement())
-  localizacaoPAId   Int
+  id                 Int              @id @default(autoincrement())
+  localizacaoPAId    Int
   relacionamentoPAId Int
-  localizacaoPA     LocalizacaoPA    @relation(fields: [localizacaoPAId], references: [id])
-  relacionamentoPA  RelacionamentoPA @relation(fields: [relacionamentoPAId], references: [id])
-  status            String          
-  dataRegistro      DateTime         @default(now())
+  localizacaoPA      LocalizacaoPA    @relation(fields: [localizacaoPAId], references: [id])
+  relacionamentoPA   RelacionamentoPA @relation(fields: [relacionamentoPAId], references: [id])
+  acao               String
+  valorAnterior      String?
+  valorNovo          String?
+  dataRegistro       DateTime         @default(now())
 }

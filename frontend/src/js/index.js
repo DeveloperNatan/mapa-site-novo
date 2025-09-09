@@ -37,14 +37,14 @@ function CreateItems(item) {
 
     <div class="col-span-1 md:col-span-1 text-left md:text-center">
         <strong class="md:hidden text-sm">Local: </strong>
-        <span>${item.localCompleto}</span>
+        <span>${item.RelacionamentoPA.localCompleto}</span>
     </div>
 
     <div class="col-span-1 text-left md:text-center">
         <strong class="md:hidden text-sm">PC: </strong>
-        <button onclick="HrefSnipePC('${item.patrimonioPC}')"
+        <button onclick="HrefSnipePC('${item.RelacionamentoPA.patrimonioPC}')"
                 class="underline decoration-1 text-black rounded-sm p-1 w-1/2 cursor-pointer">
-            <a class="flex justify-center">${item.patrimonioPC}</a>
+            <a class="flex justify-center">${item.RelacionamentoPA.patrimonioPC}</a>
         </button>
     </div>
 
@@ -93,7 +93,9 @@ async function fetchApitable() {
 
     // corrigido para usar localCompleto direto
     menutable.sort((a, b) =>
-      a.localCompleto.localeCompare(b.localCompleto)
+      a.RelacionamentoPA.localCompleto.localeCompare(
+        b.RelacionamentoPA.localCompleto
+      )
     );
 
     menutable.forEach((item) => {
@@ -112,13 +114,10 @@ ButtonBusca.addEventListener("click", () => {
   const result = menutable.filter((item) => {
     const local = item.localCompleto.toLowerCase();
     const patrimonioPC = item.patrimonioPC?.toLowerCase();
-    return (
-      local.includes(termoBusca) ||
-      patrimonioPC.includes(termoBusca)
-    );
+    return local.includes(termoBusca) || patrimonioPC.includes(termoBusca);
   });
 
-  result.forEach(item => CreateItems(item));
+  result.forEach((item) => CreateItems(item));
 });
 
 InputBusca.addEventListener("keypress", (e) => {
@@ -134,7 +133,7 @@ InputBusca.addEventListener("input", () => {
     document.getElementById("classe-J1").innerHTML = "";
     document.getElementById("classe-CWB").innerHTML = "";
     document.getElementById("classe-SP").innerHTML = "";
-    menutable.forEach(item => CreateItems(item));
+    menutable.forEach((item) => CreateItems(item));
   }
 });
 
@@ -156,14 +155,18 @@ async function ModalEdit(id) {
 
       <div>
         <label class="block text-sm font-medium">Patrimônio PC</label>
-        <input type="text" name="patrimonioPC" value="${menu.patrimonioPC}"
+        <input type="text" name="patrimonioPC" value="${
+          menu.RelacionamentoPA.patrimonioPC
+        }"
           class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
         <input type="hidden" name="id" value="${menu.id}">
       </div>
       <div>
         <label class="block text-sm font-medium">Filial</label>
         <select name="filial" class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-          <option ${menu.filial === 'J1' ? 'selected' : ''} value="J1">Joinville Site (J1)</option>
+          <option ${
+            menu.filial === "J1" ? "selected" : ""
+          } value="J1">Joinville Site (J1)</option>
         </select>
       </div>
 
@@ -188,11 +191,21 @@ async function ModalEdit(id) {
       <div>
         <label class="block text-sm font-medium">Carteira/Setor</label>
         <select name="carteira" class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-          <option ${menu.carteira === 'BV' ? 'selected' : ''} value="BV">BV</option>
-          <option ${menu.carteira === 'PAN' ? 'selected' : ''} value="PAN">PAN</option>
-          <option ${menu.carteira === 'SANTANDER' ? 'selected' : ''} value="SANTANDER">SANTANDER</option>
-          <option ${menu.carteira === 'BRADESCO' ? 'selected' : ''} value="BRADESCO">BRADESCO</option>
-          <option ${menu.carteira === 'INFRA' ? 'selected' : ''} value="INFRA">INFRA</option>
+          <option ${
+            menu.carteira === "BV" ? "selected" : ""
+          } value="BV">BV</option>
+          <option ${
+            menu.carteira === "PAN" ? "selected" : ""
+          } value="PAN">PAN</option>
+          <option ${
+            menu.carteira === "SANTANDER" ? "selected" : ""
+          } value="SANTANDER">SANTANDER</option>
+          <option ${
+            menu.carteira === "BRADESCO" ? "selected" : ""
+          } value="BRADESCO">BRADESCO</option>
+          <option ${
+            menu.carteira === "INFRA" ? "selected" : ""
+          } value="INFRA">INFRA</option>
         </select>
       </div>
 
@@ -269,11 +282,17 @@ buttonfechar.addEventListener("click", function (e) {
 });
 
 function HrefSnipePC(item) {
-  window.open(`https://snipe.schulze.com.br/hardware?page=1&size=20&order=asc&sort=name&search=${item}`, '_blank');
+  window.open(
+    `https://snipe.schulze.com.br/hardware?page=1&size=20&order=asc&sort=name&search=${item}`,
+    "_blank"
+  );
 }
 
 function HrefSnipeMNT(item) {
-  window.open(`https://snipe.schulze.com.br/hardware?page=1&size=20&order=asc&sort=name&search=${item}`, '_blank');
+  window.open(
+    `https://snipe.schulze.com.br/hardware?page=1&size=20&order=asc&sort=name&search=${item}`,
+    "_blank"
+  );
 }
 
 fetchApitable();

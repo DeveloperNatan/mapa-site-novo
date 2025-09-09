@@ -1,156 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
     <script src="../js/index.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <title>Snipe PA</title>
-    <link rel="icon" href="../assets/schulze.ico" type="image/x-icon">
+    <link rel="icon" href="../assets/schulze.ico" type="image/x-icon" />
 
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'custom-nav': '#242c33',
-                        'custom-header': '#146c84',
-                        'custom-button-add': '#1a8caa',
-                        'custom-button-close': '#195468',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "custom-nav": "#242c33",
+              "custom-header": "#146c84",
+              "custom-button-add": "#1a8caa",
+              "custom-button-close": "#195468",
+            },
+          },
+        },
+      };
     </script>
-</head>
+  </head>
 
-<body class="bg-gray-100 text-gray-900 min-h-screen">
-
+  <body class="bg-gray-100 text-gray-900 min-h-screen">
     <!-- NAVBAR -->
     <nav
-        class="bg-gradient-to-r from-custom-nav to-custom-header text-white p-4 flex flex-col md:flex-row justify-between items-center shadow-lg">
-        <div class="flex items-center">
-            <img src="../assets/logo.png" alt="Logo" class="h-14 mr-4 drop-shadow-md">
-            <h1 class="text-2xl font-bold tracking-wide">Gerenciamento de PA</h1>
-        </div>
+      class="bg-gradient-to-r from-custom-nav to-custom-header text-white p-4 flex flex-col md:flex-row justify-between items-center shadow-lg"
+    >
+      <div class="flex items-center">
+        <img
+          src="../assets/logo.png"
+          alt="Logo"
+          class="h-14 mr-4 drop-shadow-md"
+        />
+        <h1 class="text-2xl font-bold tracking-wide">Gerenciamento de PA</h1>
+      </div>
 
-        <ul class="flex items-center space-x-6 mt-4 md:mt-0">
-            <li><a href="#" class="hover:text-cyan-400 transition">Início</a></li>
-            <li><a href="/layout" class="hover:text-cyan-400 transition">Layout</a></li>
-            <form method="get" action="/logout">
-                <button
-                    class="bg-custom-button-add px-4 py-1 rounded-lg shadow hover:bg-custom-button-close transition">Sair</button>
-            </form>
-        </ul>
+      <ul class="flex items-center space-x-6 mt-4 md:mt-0">
+        <li><a href="#" class="hover:text-cyan-400 transition">Início</a></li>
+        <li>
+          <a href="/layout" class="hover:text-cyan-400 transition">Layout</a>
+        </li>
+        <form method="get" action="/logout">
+          <button
+            class="bg-custom-button-add px-4 py-1 rounded-lg shadow hover:bg-custom-button-close transition"
+          >
+            Sair
+          </button>
+        </form>
+      </ul>
     </nav>
 
     <!-- CAMPO BUSCA -->
     <div id="campo-busca" class="flex justify-center md:justify-end p-6">
-        <div class="flex items-center border border-gray-300 bg-white rounded-lg px-3 shadow">
-            <input type="search" placeholder="Digite local completo" id="input-busca"
-                class="focus:outline-none p-2 w-64 rounded-l-lg">
-            <button class="bg-custom-header text-white px-3 py-2 rounded-r-lg hover:bg-custom-button-close transition"
-                id="Button-busca">
-                <i class="bi bi-search"></i>
-            </button>
-        </div>
+      <div
+        class="flex items-center border border-gray-300 bg-white rounded-lg px-3 shadow"
+      >
+        <input
+          type="search"
+          placeholder="Digite local completo"
+          id="input-busca"
+          class="focus:outline-none p-2 w-64 rounded-l-lg"
+        />
+        <button
+          class="bg-custom-header text-white px-3 py-2 rounded-r-lg hover:bg-custom-button-close transition"
+          id="Button-busca"
+        >
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
     </div>
 
     <!-- CABEÇALHO TABELA -->
     <div
-        class="hidden md:grid grid-cols-7 font-semibold bg-custom-header text-white rounded-lg p-3 text-center mx-4 shadow">
-        <span>FILIAL</span>
-        <span>ANDAR</span>
-        <span>ESPINHA</span>
-        <span>PA</span>
-        <span>LOCAL COMPLETO</span>
-        <span>COMPUTADOR</span>
-        <span>AÇÕES</span>
+      class="hidden md:grid grid-cols-7 font-semibold bg-custom-header text-white rounded-lg p-3 text-center mx-4 shadow"
+    >
+      <span>FILIAL</span>
+      <span>ANDAR</span>
+      <span>ESPINHA</span>
+      <span>PA</span>
+      <span>LOCAL COMPLETO</span>
+      <span>COMPUTADOR</span>
+      <span>AÇÕES</span>
     </div>
 
     <!-- CONTEÚDO -->
     <div id="menu-container" class="p-4">
-        <h2 class="text-xl font-bold text-custom-header mb-3">Joinville Site</h2>
-        <div id="classe-J1" class="bg-white rounded-lg shadow p-4">
-            <!-- Conteúdo dinâmico -->
-        </div>
+      <h2 class="text-xl font-bold text-custom-header mb-3">Joinville Site</h2>
+      <div id="classe-J1" class="bg-white rounded-lg shadow p-4">
+        <!-- Conteúdo dinâmico -->
+      </div>
     </div>
 
     <!-- BOTÃO ADICIONAR -->
     <div class="flex justify-center mt-6">
-        <button id="button-modal-add"
-            class="bg-custom-button-add text-white py-3 px-8 rounded-lg shadow-lg hover:bg-custom-button-close transition">
-            <i class="bi bi-plus-lg mr-2"></i>Adicionar
-        </button>
+      <button
+        id="button-modal-add"
+        class="bg-custom-button-add text-white py-3 px-8 rounded-lg shadow-lg hover:bg-custom-button-close transition"
+      >
+        <i class="bi bi-plus-lg mr-2"></i>Adicionar
+      </button>
     </div>
 
     <!-- MODAL -->
-    <div id="modal-add"
-        class="fixed inset-0 bg-black/50 flex items-center justify-center opacity-0 invisible transition-opacity duration-300">
-        <div class="bg-white border border-gray-200 p-6 rounded-2xl shadow-xl w-full max-w-lg text-gray-900">
-            <h1 class="text-2xl font-bold mb-6 text-center text-custom-header">Adicionar Computador</h1>
-            <form action="/create" method="post" class="grid grid-cols-1 gap-4">
+    <div
+      id="modal-add"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center opacity-0 invisible transition-opacity duration-300"
+    >
+      <div
+        class="bg-white border border-gray-200 p-6 rounded-2xl shadow-xl w-full max-w-lg text-gray-900"
+      >
+        <h1 class="text-2xl font-bold mb-6 text-center text-custom-header">
+          Adicionar Computador
+        </h1>
+        <form action="/create" method="post" class="grid grid-cols-1 gap-4">
+          <div>
+            <label class="block text-sm font-medium">Patrimônio PC</label>
+            <input
+              type="text"
+              name="patrimonioPC"
+              class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50"
+            />
+          </div>
 
-                <div>
-                    <label class="block text-sm font-medium">Patrimônio PC</label>
-                    <input type="text" name="patrimonioPC"
-                        class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-                </div>
+          <div>
+            <label class="block text-sm font-medium">Filial</label>
+            <select
+              name="filial"
+              class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50"
+            >
+              <option value="J1">Joinville Site (J1)</option>
+            </select>
+          </div>
 
-                <div>
-                    <label class="block text-sm font-medium">Filial</label>
-                    <select name="filial" class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-                        <option value="J1">Joinville Site (J1)</option>
-                    </select>
-                </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-sm font-medium">Andar</label>
+              <input
+                type="text"
+                name="andar"
+                class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium">Espinha</label>
+              <input
+                type="text"
+                name="espinha"
+                class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium">PA</label>
+              <input
+                type="text"
+                name="pa"
+                class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50"
+              />
+            </div>
+          </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium">Andar</label>
-                        <input type="text" name="andar"
-                            class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Espinha</label>
-                        <input type="text" name="espinha"
-                            class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">PA</label>
-                        <input type="text" name="pa"
-                            class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-                    </div>
-                </div>
+          <div>
+            <label class="block text-sm font-medium">Carteira/Setor</label>
+            <select
+              name="carteira"
+              class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50"
+            >
+              <option value="BV">BV</option>
+              <option value="SANTANDER">SANTANDER</option>
+              <option value="BRADESCO">BRADESCO</option>
+              <option value="PAN">PAN</option>
+              <option value="INFRA">INFRA</option>
+            </select>
+          </div>
 
-                <div>
-                    <label class="block text-sm font-medium">Carteira/Setor</label>
-                    <select name="carteira" class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-                        <option value="BV">BV</option>
-                        <option value="SANTANDER">SANTANDER</option>
-                        <option value="BRADESCO">BRADESCO</option>
-                        <option value="PAN">PAN</option>
-                        <option value="INFRA">INFRA</option>
-                    </select>
-                </div>
-
-                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button type="submit"
-                        class="w-full bg-custom-button-add text-white py-2 px-4 rounded-lg shadow hover:bg-custom-button-close transition">
-                        Adicionar
-                    </button>
-                    <button type="button" id="buttton-modal-fechar"
-                        class="w-full bg-gray-400 text-white py-2 px-4 rounded-lg shadow hover:bg-gray-500 transition">
-                        Fechar
-                    </button>
-                </div>
-            </form>
-        </div>
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+              type="submit"
+              class="w-full bg-custom-button-add text-white py-2 px-4 rounded-lg shadow hover:bg-custom-button-close transition"
+            >
+              Adicionar
+            </button>
+            <button
+              type="button"
+              id="buttton-modal-fechar"
+              class="w-full bg-gray-400 text-white py-2 px-4 rounded-lg shadow hover:bg-gray-500 transition"
+            >
+              Fechar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
 
     <div class="hidden" id="ModalEdit"></div>
-</body>
-
+  </body>
 </html>
