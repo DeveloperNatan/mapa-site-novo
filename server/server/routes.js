@@ -4,7 +4,6 @@ const service = require("../service/service");
 const path = require("path");
 const htmlPath = path.join(__dirname, "../../frontend/src/html/");
 
-
 function AuthMiddle(req, res, next) {
   if (req.session.user) {
     return next();
@@ -18,17 +17,21 @@ router.get("/", AuthMiddle, (req, res) => {
 
 router.get("/layout", AuthMiddle, (req, res) => {
   res.sendFile(path.join(htmlPath, "layout.html"));
-})
+});
+
+router.get("/analytics", AuthMiddle, (req, res) => {
+  res.sendFile(path.join(htmlPath, "analytics.html"));
+});
 
 router.get("/login", (req, res) => {
-  res.sendFile(path.join(htmlPath, "login.html"))
-})
+  res.sendFile(path.join(htmlPath, "login.html"));
+});
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/login");
-  })
-})
+  });
+});
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
@@ -39,9 +42,7 @@ router.post("/login", (req, res) => {
   }
 
   res.status(401).json({ message: "Usuário ou senha inválidos" });
-
-})
-
+});
 
 router.post("/create", AuthMiddle, async (req, res) => {
   await service.Cadastro(req, res);
