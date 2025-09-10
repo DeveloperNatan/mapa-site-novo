@@ -1,7 +1,6 @@
 const prisma = require("../data/prisma");
 
 exports.Cadastro = async function (req, res) {
-  console.log(req.body);
   const { filial, andar, espinha, pa, patrimonioPC, carteira } = req.body;
 
   const localcompleto = `${filial}-A${andar.padStart(
@@ -35,16 +34,17 @@ exports.Cadastro = async function (req, res) {
         carteira: carteira,
       },
     });
-    await prisma.relacionamentoPA.create({
-      data: {
-        id: NovaPA.id,
-        localCompleto: localcompleto,
-        patrimonioPC: patrimonioPC,
-      },
-    });
+    if (patrimonioPC && patrimonioPC.trim() !== "") {
+      await prisma.relacionamentoPA.create({
+        data: {
+          id: NovaPA.id,
+          localCompleto: localcompleto,
+          patrimonioPC: patrimonioPC,
+        },
+      });
+    }
     res.status(201).redirect("/");
   } catch (error) {
-    console.error({ error: "erro ao criar", details: error.message });
     res.status(501).json({ error: "error ao criar", details: error.message });
   }
 };
@@ -65,7 +65,7 @@ exports.Delete = async function (req, res) {
     });
     res.status(201).redirect("/");
   } catch (error) {
-    res.status(401).json({ error: "erro ao deletar", details: error.message });
+    res.status(501).json({ error: "erro ao deletar", details: error.message });
   }
 };
 
@@ -107,8 +107,7 @@ exports.Edicao = async function (req, res) {
 
     res.status(201).redirect("/");
   } catch (error) {
-    console.error({ error: "Erro ao editar", details: error.message });
-    res.status(500).json({ error: "Erro ao editar", details: error.message });
+    res.status(501).json({ error: "Erro ao editar", details: error.message });
   }
 };
 
@@ -118,11 +117,14 @@ exports.HistoricoFind = async function (req, res) {
     const resultado = await prisma.relacionamentoPA.findUnique({
       where: { id: Number(id) },
       include: {
-        HistoricoPA: true
-      }
+        HistoricoPA: true,
+      },
     });
-    res.json(resultado); 1
+    res.json(resultado);
+    1;
   } catch (error) {
-    console.error({ error: error.message });
+    res
+      .status(501)
+      .json({ error: "Erro consultar historico", details: error.message });
   }
-}
+};

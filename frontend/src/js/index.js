@@ -97,6 +97,7 @@ async function fetchApitable() {
     }
 
     menutable = await response.json();
+    console.log(menutable);
 
     // corrigido para usar localCompleto direto
     menutable.sort((a, b) =>
@@ -110,7 +111,7 @@ async function fetchApitable() {
     });
   } catch (error) {
     console.log("Erro ao buscar dados:", error);
-    return menutable = [];
+    return (menutable = []);
   }
 }
 
@@ -163,16 +164,18 @@ async function ModalEdit(id) {
 
       <div>
         <label class="block text-sm font-medium">Patrimônio PC</label>
-        <input type="text" name="patrimonioPC" value="${menu.RelacionamentoPA.patrimonioPC
-      }"
+        <input type="text" name="patrimonioPC" value="${
+          menu.RelacionamentoPA.patrimonioPC
+        }"
           class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
         <input type="hidden" name="id" value="${menu.id}">
       </div>
       <div>
         <label class="block text-sm font-medium">Filial</label>
         <select name="filial" class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-          <option ${menu.filial === "J1" ? "selected" : ""
-      } value="J1">Joinville Site (J1)</option>
+          <option ${
+            menu.filial === "J1" ? "selected" : ""
+          } value="J1">Joinville Site (J1)</option>
         </select>
       </div>
 
@@ -197,16 +200,21 @@ async function ModalEdit(id) {
       <div>
         <label class="block text-sm font-medium">Carteira/Setor</label>
         <select name="carteira" class="mt-1 block p-2 w-full rounded-md border border-gray-300 bg-gray-50">
-          <option ${menu.carteira === "BV" ? "selected" : ""
-      } value="BV">BV</option>
-          <option ${menu.carteira === "PAN" ? "selected" : ""
-      } value="PAN">PAN</option>
-          <option ${menu.carteira === "SANTANDER" ? "selected" : ""
-      } value="SANTANDER">SANTANDER</option>
-          <option ${menu.carteira === "BRADESCO" ? "selected" : ""
-      } value="BRADESCO">BRADESCO</option>
-          <option ${menu.carteira === "INFRA" ? "selected" : ""
-      } value="INFRA">INFRA</option>
+          <option ${
+            menu.carteira === "BV" ? "selected" : ""
+          } value="BV">BV</option>
+          <option ${
+            menu.carteira === "PAN" ? "selected" : ""
+          } value="PAN">PAN</option>
+          <option ${
+            menu.carteira === "SANTANDER" ? "selected" : ""
+          } value="SANTANDER">SANTANDER</option>
+          <option ${
+            menu.carteira === "BRADESCO" ? "selected" : ""
+          } value="BRADESCO">BRADESCO</option>
+          <option ${
+            menu.carteira === "INFRA" ? "selected" : ""
+          } value="INFRA">INFRA</option>
         </select>
       </div>
 
@@ -297,9 +305,7 @@ function HrefSnipeMNT(item) {
 }
 
 function HrefHistorico(item) {
-  window.open(
-    `${CONFIG.PORT_HISTORICO}historico/${item}`
-  );
+  window.open(`${CONFIG.PORT_HISTORICO}historico/${item}`);
 }
 
 fetchApitable();

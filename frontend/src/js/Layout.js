@@ -193,7 +193,7 @@ function OpenModalItens(localCompleto, patrimonioPC, id) {
 
   // Evento botão editar
   const botaoEditar = ModalItens.querySelector("#OpenModalEdit");
-  botaoEditar.addEventListener("click", () => { });
+  botaoEditar.addEventListener("click", () => {});
 
   ModalItens.classList.remove("hidden");
   ModalItens.classList.add("flex");
@@ -218,11 +218,8 @@ function configurarPAs() {
   });
 }
 
-
 function HrefHistorico(item) {
-  window.open(
-    `http://localhost:9000/historico/${item}`
-  );
+  window.open(`${CONFIG.PORT_HISTORICO}historico/${item}`);
 }
 
 function HrefSnipePC(item) {
