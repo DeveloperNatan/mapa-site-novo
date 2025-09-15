@@ -166,12 +166,13 @@ function OpenModalItens(localCompleto, patrimonioPC, id) {
       </div>
 
       <!-- Histórico -->
-      <div class="flex flex-col cursor-pointer" onclick="HrefHistorico(${id})">
-        <h2 class="font-semibold text-gray-700 mb-1">Histórico</h2>
-        <span class="text-gray-600 hover:text-cyan-600 transition-colors flex items-center gap-1">
-          Ver histórico <i class="bi bi-clock-history"></i>
-        </span>
-      </div>
+     <div class="flex flex-col cursor-pointer">
+    <h2 class="font-semibold text-gray-700 mb-1">Histórico</h2>
+    <a href='historico/${id}'>
+      <span class="text-gray-600 hover:text-cyan-600 transition-colors flex items-center gap-1">
+        Ver histórico <i class="bi bi-clock-history"></i>
+      </span></a>
+  </div>
 
     </div>
 
@@ -216,10 +217,6 @@ function configurarPAs() {
       OpenModalItens(local, pc, id);
     });
   });
-}
-
-function HrefHistorico(item) {
-  window.open(`${CONFIG.PORT_HISTORICO}historico/${item}`);
 }
 
 function HrefSnipePC(item) {
