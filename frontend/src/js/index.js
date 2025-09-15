@@ -62,10 +62,10 @@ function CreateItems(item) {
         </form>
         <div class="col-span-1 text-left md:text-center">
         <strong class="md:hidden text-sm">PC: </strong>
-        <button onclick="HrefHistorico('${item.id}')"
+        <a href="historico/${item.id}"
                 class="underline decoration-1 text-black rounded-sm p-1 w-1/2 cursor-pointer">
             <i class="bi bi-clock-history"></i>
-        </button>
+        </a>
     </div>
     </div>
      
@@ -304,8 +304,5 @@ function HrefSnipeMNT(item) {
   );
 }
 
-function HrefHistorico(item) {
-  window.open(`${CONFIG.PORT_HISTORICO}historico/${item}`);
-}
 
 fetchApitable();
