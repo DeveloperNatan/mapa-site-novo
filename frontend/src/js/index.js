@@ -62,8 +62,7 @@ function CreateItems(item) {
         </form>
         <div class="col-span-1 text-left md:text-center">
         <strong class="md:hidden text-sm">PC: </strong>
-        <a href="historico/${item.id}"
-                class="underline decoration-1 text-black rounded-sm p-1 w-1/2 cursor-pointer">
+        <a href="historico/${item.id}" class="underline decoration-1 text-black rounded-sm p-1 w-1/2 cursor-pointer">
             <i class="bi bi-clock-history"></i>
         </a>
     </div>
