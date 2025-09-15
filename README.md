@@ -9,7 +9,6 @@ Crie um arquivo .env na raiz do projeto e defina as seguintes variáveis:
 1.1 - Configurar Variáveis de Ambiente Front via config.js
 const CONFIG = {
   API_URL: "http://localhost:9001/",
-  PORT_HISTORICO: "http://localhost:9000/" (a url padrao do site)
 };
 
 2. Instalar Dependências
