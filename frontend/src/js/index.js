@@ -97,7 +97,6 @@ async function fetchApitable() {
     }
 
     menutable = await response.json();
-    console.log(menutable);
 
     // corrigido para usar localCompleto direto
     menutable.sort((a, b) =>

@@ -11,11 +11,9 @@ const carteiraEl = document.getElementById("carteira");
 const patrimonioPCE = document.getElementById("patrimonioPC");
 const LocalId = document.getElementsByName("id-historico");
 
-// Pega o ID diretamente da URL
 const pathParts = window.location.pathname.split("/");
-const id = pathParts[pathParts.length - 1]; // último segmento é o ID
+const id = pathParts[pathParts.length - 1]; 
 
-// Variável para armazenar o histórico
 let historicoData = [];
 
 // Função para buscar dados da API
@@ -83,10 +81,4 @@ function renderTable() {
   });
 }
 
-
-// Eventos de filtro
-
-
-
-// Inicializa
 fetchHistorico();
