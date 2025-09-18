@@ -53,6 +53,9 @@ exports.Delete = async function (req, res) {
   const id = parseInt(req.body.id);
 
   try {
+    await prisma.historicoPA.deleteMany({
+      where: { relacionamentoPAId: id },
+    })
     await prisma.relacionamentoPA.deleteMany({
       where: {
         id: id,
