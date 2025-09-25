@@ -12,7 +12,7 @@ let analyticsData = [];
 // Função para buscar dados da API
 async function fetchAnalytics() {
   try {
-    const response = await fetch(`${CONFIG.API_URL}api/relacao`);
+    const response = await fetch(`/api/relacao`);
     if (!response.ok) throw new Error(`Erro ao buscar dados: ${response.status}`);
     const data = await response.json();
     analyticsData = data;

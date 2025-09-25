@@ -15,6 +15,14 @@ router.get("/", AuthMiddle, (req, res) => {
   res.sendFile(path.join(htmlPath, "index.html"));
 });
 
+router.get("/api/relacao/", AuthMiddle, async function (req, res) {
+  await service.EncontrarTodos(req, res);
+})
+
+router.get("/api/relacao/:id", AuthMiddle, async function (req, res) {
+  await service.EncontrarUm(req, res);
+})
+
 router.get("/layout", AuthMiddle, (req, res) => {
   res.sendFile(path.join(htmlPath, "layout.html"));
 });

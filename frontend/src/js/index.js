@@ -89,7 +89,7 @@ function CreateItems(item) {
 
 async function fetchApitable() {
   try {
-    const url = `${CONFIG.API_URL}api/relacao`;
+    const url = `/api/relacao`;
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -147,7 +147,7 @@ InputBusca.addEventListener("input", () => {
 
 async function ModalEdit(id) {
   try {
-    const url = `${CONFIG.API_URL}api/relacao/${id}`;
+    const url = `/api/relacao/${id}`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`API request failed, status:${response.status}`);

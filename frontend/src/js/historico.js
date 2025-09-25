@@ -19,7 +19,7 @@ let historicoData = [];
 // Função para buscar dados da API
 async function fetchHistorico() {
   try {
-    const url = `${CONFIG.API_URL}api/relacao/${id}`;
+    const url = `/api/relacao/${id}`;
     const response = await fetch(url);
 
     if (!response.ok) throw new Error(`API request failed, status: ${response.status}`);
