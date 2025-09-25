@@ -9,12 +9,12 @@ Crie um arquivo .env na raiz do projeto e defina as seguintes variáveis:
 Execute o comando:
 - npm install
 
-4. Sincronizar Banco de Dados
+3. Sincronizar Banco de Dados
 Execute os seguintes comandos no path:  mapa-site-novo/server/data/prisma, na ordem:
 - npx prisma migrate status
 - npx prisma db pull
 - npx prisma generate
 
-5. Iniciar a Aplicação
+4. Iniciar a Aplicação
 Execute o comando:
 - npm start
