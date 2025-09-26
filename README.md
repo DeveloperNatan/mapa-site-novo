@@ -11,9 +11,9 @@ Execute o comando:
 
 4. Sincronizar Banco de Dados
 Execute os seguintes comandos no path:  mapa-site-novo/server/data/prisma, na ordem:
-npx prisma migrate status
-npx prisma migrate deploy
-npx prisma generate
+- npx prisma migrate status
+- npx prisma migrate deploy
+- npx prisma generate
 
 4. Aplicar Triggers
 Execute o script SQL localizado em data/trigger.sql diretamente no banco de dados. Via query tool.
