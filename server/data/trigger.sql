@@ -9,7 +9,7 @@ BEGIN
         )
         VALUES (
             NEW."id", NEW."id", 'INSERCAO', NULL, 
-            concat_ws('-', NEW."patrimonioPC", NEW."patrimonioMNT1", NEW."patrimonioMNT2"),
+            concat_ws(NEW."patrimonioPC", NEW."patrimonioMNT1", NEW."patrimonioMNT2"),
             NOW()
         );
         RETURN NEW;
