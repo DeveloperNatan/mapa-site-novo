@@ -59,7 +59,7 @@ Por isso, o servidor pode **resetar automaticamente** após algum tempo de inati
 Isso é um comportamento normal da plataforma e não indica erro no projeto.
 
 ## ⚠️ Outro ponto importante:
-- ao ser redirecionado para: `https://snipe.schulze.com.br/hardware` não será possível concluir a navegação, pois este sistema funciona apenas dentro da rede interna da empresa.
+- Ao ser redirecionado para: `https://snipe.schulze.com.br/hardware` não será possível concluir a navegação, pois este sistema funciona apenas dentro da rede interna da empresa.
 A versão publicada serve exclusivamente para conhecimento do projeto e como portfólio.
   
 
