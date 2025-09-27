@@ -7,6 +7,15 @@
     "schema": "server/data/prisma/schema.prisma"
   },
   "dependencies": {
-    "dotenv": "^17.2.2"
+    "@prisma/client": "^6.15.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "espress": "^0.0.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "prisma": "^6.15.0"
   }
 }
