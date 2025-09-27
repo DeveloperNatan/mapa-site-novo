@@ -1,6 +1,10 @@
 {
   "scripts": {
-    "start": "node ./server/server/server.js"
+    "start": "node ./server/server/server.js",
+    "generate": "npx prisma generate --schema=server/data/prisma/schema.prisma"
+  },
+  "prisma": {
+    "schema": "server/data/prisma/schema.prisma"
   },
   "dependencies": {
     "dotenv": "^17.2.2"
