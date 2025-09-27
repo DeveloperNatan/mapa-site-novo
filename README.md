@@ -57,8 +57,8 @@ Este é um projeto monolítico, com frontend e backend no mesmo repositório, ro
 Este projeto está hospedado em uma plataforma gratuita (Render Free Tier).  
 Por isso, o servidor pode **resetar automaticamente** após algum tempo de inatividade, o que pode causar demora na primeira requisição ou reinício temporário da aplicação.  
 Isso é um comportamento normal da plataforma e não indica erro no projeto.
-- Outro ponto importante: ao ser redirecionado para :
-`https://snipe.schulze.com.br/hardware` não será possível concluir a navegação, pois este sistema funciona apenas dentro da rede interna da empresa.
+- Outro ponto importante:
+- ao ser redirecionado para: `https://snipe.schulze.com.br/hardware` não será possível concluir a navegação, pois este sistema funciona apenas dentro da rede interna da empresa.
 A versão publicada serve exclusivamente para conhecimento do projeto e como portfólio.
   
 
