@@ -1,7 +1,7 @@
 # 🗺️ Snipe PA
 
 Projeto monolítico desenvolvido para atender uma demanda real da empresa:
-permitir a localização de máquinas e seus locais físicos, com histórico de movimentações e análises de uso..
+permitir a localização de máquinas e seus locais físicos, com histórico de movimentações e análises de troca.
 
 ---
 
